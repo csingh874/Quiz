@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block csscontent %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&family=Roboto+Slab&display=swap');
+    .customize {
+        color : green;
+    }
+    .customizewrong{
+        color : red;
+    }
+    .img-length{
+        height: 500px;
+    }
+    .text-col{
+     font-family: 'Roboto Slab', serif;
+     color: #00000;
+     }
+
+</style>
+{% endblock csscontent %}
+
+{% block content %}
+{% load static %}
+
+<div class="bg-image">
+<div class="container position-absolute top-50 start-50 translate-middle ">
+        <div class="row">
+            <div class="col-lg-12 text-center mt-5" id="set-image">
+            </div>
+            <div class="col-lg-12">
+                <div class="container">
+                    <div id="score" class="text-center">
+                         <h3 class="text-col fw-bolder fst-italic">Hi {{name}} your Quiz Result.</h3>
+                    </div>
+                    <div class="text-center mb-5">
+                        <a href="{% url 'quizgame:home' %}" class="btn btn-primary text-white">Home Page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+<script src="{% static '/js/result.js' %}"></script>
+{% endblock content %}

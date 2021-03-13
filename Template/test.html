@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block csscontent %}
+<style>
+    .btn-clr{
+        background: #005AA7;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right,#2193b0, #6dd5ed);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #2193b0 ,#6dd5ed); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+</style>
+
+{% endblock csscontent %}
+{% block content %}
+{% load static %}
+<script src="{% static '/js/main.js' %}"></script>
+<div class="container mt-5 mb-5">
+     <div class  = "d-flex align-items-center justify-content-center"  style ="height:100%;">
+         <div class="form-container px-5 pb-5">
+                    <h1 class="text-center fs-1 fw-bolder mt-3">{{topic}} Test</h1>
+                        <div class="mt-4 text-center">
+                             <label id="page_number"></label>
+                             <h6 id="qts"></h6>
+                        </div>
+                        <div class="btn-group-vertical" role="group" aria-label="Basic mixed styles example" style="width:100%;">
+                            <input id ="btn-1" type="button" class="btn btn-outline-primary mt-3" onclick = "check(this.id)">
+                            <input  type="button" id ="btn-2" class="btn btn-outline-primary mt-3" onclick = "check(this.id)">
+                            <input type="button" id ="btn-3" class="btn btn-outline-primary mt-3" onclick = "check(this.id)">
+                            <input type="button" id ="btn-4" class="btn btn-outline-primary mt-3" onclick = "check(this.id)">
+                         </div>
+                         <a type="submit" class="btn btn-primary text-white d-grid mt-4 disabled" onclick="qts_count();" id="btn_nxt">Next</a>
+                        <form method="POST" action="{% url 'quizgame:result' %}">
+                            {% csrf_token %}
+                             <div id="submit" class="d-grid">
+                             </div>
+                         </form>
+         </div>
+     </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    function get_data(){
+        var data = JSON.parse("{{json_data|escapejs}}");
+        return data;
+        }
+</script>
+{% endblock content %}

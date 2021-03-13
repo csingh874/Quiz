@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class = "d-flex align-items-center justify-content-center"  style ="height:100%;">
+        <div class="form-container p-4">
+            <h1 class="text-center">Some rules of this Quiz.</h1>
+            <hr>
+            <ol>
+                <li>You can directly go for test and check your knowledge.</li>
+                <li>You can do some practice before taking the actuall test.</li>
+                <li>There will be total 10 questions</li>
+                <li>Each correct answer carries 1 Point</li>
+                <li>No Point reduction of incorrect answer.</li>
+                <li>Once You select your answer it can't be undone.</li>
+                <li>You cant't exit from the Quiz while playing.</li>
+            </ol>
+	        <a class="btn btn-primary d-grid" href="{% url 'quizgame:set_session' topic %}">Start Test</a>
+        </div>
+	</div>
+</div>
+{% endblock content%}

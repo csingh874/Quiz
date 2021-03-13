@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block csscontent %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&family=Roboto+Slab&display=swap');
+p{
+    font-family: 'Alegreya Sans', sans-serif;
+    }
+   h1{
+    font-family: 'Roboto Slab', serif;
+    }
+    @media only screen and (width < 768px){
+        .card-mobile{
+
+          top: 80%;
+          left: 80%;
+          /* bring your own prefixes */
+
+        }
+        }
+
+</style>
+{% endblock csscontent %}
+{% block content %}
+<div class="container mt-5">
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    {% endif %}
+    <div id="home">
+        <h1 class="text-center fw-bolder clr">Quiz</h1>
+        <p class="fs-4">We created these online Python quizzes as a fun way for you to check your learning progress and to test your skills.
+        Each quiz takes you through a series of questions. Some of them are multiple choice, some will ask you to type in an answer, and some will require you to write actual Python code. As you make your way through each quiz, it keeps score of which questions you answered correctly.
+        At the end of each quiz you receive a grade based on your result. If you don’t score 100% on your first try—don’t fret! These quizzes are meant to challenge you and it’s expected that you go through them several times, improving your score with each run.
+        All of these quizzes were created by professional Python developers with years of experience to ensure you’re learning the skills and techniques that really matter.
+        </p>
+    </div>
+    <hr>
+    <div id="topic">
+        <h1 class="text-center fw-bolder clr mb-5 mt-5">Quiz Topics</h1>
+
+        <div class="row">
+            {% if topics %}
+                {% for topic in topics %}
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-3 justify-content-center">
+                    <div class="card rounded-4 shadow-lg" style="width: auto;">
+                         <div class="card-body">
+                             <h1 class="text-center"><a href="{% url 'quizgame:topic_selector' topic %}" class="text-white text-decoration-none">{{topic}}</a></h1>
+                         </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    No Quiz Available Right Now.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<footer class="blog-footer">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Quiz Application</h1>
+            <p>If any one interested in buying or learning this project.<br> Feel Free to contact on csingh874@gmail.com.</p>
+            <p>I will not only help you in learning this project but also help you to add some additional Features or changing frontend Design.</p>
+        </div>
+    <div class="col-md-4">
+            <h3 class="fw-bolder">Technology Used</h3>
+            <label>Django</label><br>
+            <label>Html</label><br>
+            <label>CSS</label><br>
+            <label>Javascript</label><br>
+            <label>Bootstrap</label><br>
+        </div>
+    </div>
+</footer>
+{% endblock content %}
